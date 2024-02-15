@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/css/main.css" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <link rel="stylesheet" href="src/css/certificates.css" />
+
+  <title>Portfolio Gabriel Goris</title>
+</head>
+
+<body class="body">
+  <video autoplay loop muted class="bg_video">
+    <source
+      src="https://static.vecteezy.com/system/resources/previews/004/827/594/mp4/technology-plexus-background-free-video.mp4"
+      type="video/mp4" />
+  </video>
+
+  <header>
+    <ul class="navlist">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="certificates.html">Certificados</a>
+      </li>
+      <li>
+        <a href="projects.html">Projetos</a>
+      </li>
+      <li class="dropdown">
+        <a href="">Contatos</a>
+
+        <div class="dropdown-menu">
+          <a href="https://www.linkedin.com/in/gabriel-goris-239957251/" target="_blank"><img class="linkedin"
+            src="https://cdn.icon-icons.com/icons2/99/PNG/512/linkedin_socialnetwork_17441.png" 
+            alt="">LinkedIn</a>
+        <a href="https://github.com/GabrielGoris" target="_blank"><img class=" github"
+            src="https://cdn.icon-icons.com/icons2/1488/PNG/512/5347-github_102542.png" 
+            alt="">GitHub</a>
+        <a href="mailto:Gabriel.GorisMoura@gmail.com" target="_blank"> <img class="email"
+            src="https://static.vecteezy.com/system/resources/previews/020/009/601/non_2x/email-and-mail-icon-black-free-png.png"
+            alt="">Email</a>
+        <a href="https://www.instagram.com/goris_moura/" target="_blank"><img class="instagram"
+            src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png"
+            alt="">Instagram</a>
+        </div>
+      </li>
+      <a class="languages" href="./certificados.html"><img src="   https://cdn-icons-png.flaticon.com/512/330/330430.png " alt=""></a>
+      <a class="languages" href="./certificates.html"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png" alt=""></a>
+    </ul>
+
+    <main>
+      <h1 class="text">Principais Certificados</h1>
+      <div class="slider">
+
+        <div class="slides">
+
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          
+
+          <div class="slide first">
+            <p class="name-certificate">Certificado Toeic</p>
+            <img src="./img-certificados/Certificado TOEIC.jpg" alt="Certificado TOEIC">
+          </div>
+          <div class="slide">
+            <p class="name-certificate">Certificado Laboratório de hardware</p>
+            <img src="./img-certificados/Laboratório de H-.jpg" alt="Certificado Hardware Laboratory">
+            
+          </div>
+          <div class="slide">
+            <p class="name-certificate">Certificado Frontend com Angular</p>
+            <img src="./img-certificados/Frontend com angular.jpg" alt="Certificado Frontend Angular">
+          </div>
+        </div>
+
+        <div class="manual-navigation">
+          <label for="radio1" class="manual-btn"> <p class="name-certificate">Toeic</p>
+            <img class="img-btn" src="./img-certificados/Certificado TOEIC.jpg" alt="Imagem 1"></label>
+          <label for="radio2" class="manual-btn"> <p class="name-certificate">Laboratório de Hardware</p>
+            <img src="./img-certificados/Laboratório de H-.jpg" alt="Imagem 2"></label>
+          <label for="radio3" class="manual-btn"> <p class="name-certificate">Frontend Angular</p>
+            <img src="./img-certificados/Frontend com angular.jpg" alt="Imagem 3"></label>
+        </div>
+
+      </div>
+
+
+    </main>
+    <script src="./src/js/certificates.js"></script>
+</body>
+
+</html>

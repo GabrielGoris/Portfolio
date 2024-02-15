@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/css/styles.css"/>
+  <link rel="stylesheet" href="src/css/main.css" />
+  
+
+  <title>Portfolio Gabriel Goris</title>
+</head>
+
+<body class="body">
+  <video autoplay loop muted class="bg_video">
+    <source
+      src="https://static.vecteezy.com/system/resources/previews/004/827/594/mp4/technology-plexus-background-free-video.mp4"
+      type="video/mp4" />
+  </video>
+
+  <header>
+    <ul class="navlist">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="certificates.html">Certificates</a>
+      </li>
+      <li>
+        <a href="projects.html">Projects</a>
+      </li>
+      <li class="dropdown">
+        <a href="">Contacts</a>
+        <div class="dropdown-menu">
+          <a href="https://www.linkedin.com/in/gabriel-goris-239957251/" target="_blank"><img class="linkedin"
+            src="https://cdn.icon-icons.com/icons2/99/PNG/512/linkedin_socialnetwork_17441.png" 
+            alt="">LinkedIn</a>
+        <a href="https://github.com/GabrielGoris" target="_blank"><img class=" github"
+            src="https://cdn.icon-icons.com/icons2/1488/PNG/512/5347-github_102542.png" 
+            alt="">GitHub</a>
+        <a href="mailto:Gabriel.GorisMoura@gmail.com" target="_blank"> <img class="email"
+            src="https://static.vecteezy.com/system/resources/previews/020/009/601/non_2x/email-and-mail-icon-black-free-png.png"
+            alt="">Email</a>
+        <a href="https://www.instagram.com/goris_moura/" target="_blank"><img class="instagram"
+            src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png"
+            alt="">Instagram</a>
+        </div>
+      </li>
+      <a class="languages" href="./index_br.html"><img src="   https://cdn-icons-png.flaticon.com/512/330/330430.png " alt=""></a>
+      <a class="languages" href="./index.html"><img src="https://cdn-icons-png.flaticon.com/512/206/206626.png" alt=""></a>
+    </ul>
+  </header>
+
+  <main class="home" id="home">
+    <div class="content">
+      <h1>
+        <p>Welcome </p>
+        to my Portfolio
+      </h1>
+      <p>
+        Aiming for new heights line by line
+      </p>
+      <a href="https://www.linkedin.com/in/gabriel-goris-239957251/" target="_blank"> <img id="socialMedia" class="linkedin"
+        src="https://cdn.icon-icons.com/icons2/99/PNG/512/linkedin_socialnetwork_17441.png" 
+        alt=""></a>
+        <a href="https://github.com/GabrielGoris" target="_blank"> <img id="socialMedia" class="github"
+          src="https://cdn.icon-icons.com/icons2/1488/PNG/512/5347-github_102542.png" 
+          alt=""></a>
+      <a href="https://www.instagram.com/goris_moura/" target="_blank"><img id="socialMedia" class="instagram"
+        src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png"
+        alt=""></a>
+    </div>
+
+    <div class="card">
+      <img src="./WhatsApp Image 2024-02-12 at 10.23.05.jpeg" alt="">
+      <h1>Gabriel Goris</h1>
+      <p>Systems Analysis and Development student at Fatec in Mogi das Cruzes, São Paulo.
+        <br><br>
+          Current study: JavaScript course taught by Cisco
+      </p>
+
+      <a onclick="openModal()"><button href="">more about me</button></a>
+
+  </main>
+
+  <div class="modal-container">
+    <div class="modal">
+      <div class="text">
+      <p>Hello! My name is Gabriel Goris de Moura, and I am a multifaceted individual passionate about continuous learning. Recently, I embarked on the exciting journey of programming by enrolling in the Analysis and Systems Development college program. Determined to enhance my skills, I immersed myself in bootcamps, videos, and external courses to complement my knowledge. 
+        <br><br>
+        Currently, I am focused on specializing in JavaScript, a versatile and essential language in the world of web development. Simultaneously, I am broadening my educational horizon through a course at Cisco, solidifying my mastery of this crucial aspect of technology.
+        <br><br>
+        Beyond programming, I am an enthusiast of various hobbies. My passion for 3D modeling and 3D printing allows me to materialize my creativity in tangible ways. Writing and reading hold a special place in my routine, providing me an escape to imaginary worlds and a platform to express my ideas.
+        <br><br>
+        It's interesting to note that my previous academic background is in Civil Engineering. Despite graduating in this field, I am determined to explore new horizons and pursue a career more aligned with my emerging passion for programming and technology.
+        <br><br>
+        In summary, I am someone who embraces change, seeks knowledge incessantly, and finds satisfaction in a wide range of creative activities. I am excited about the possibilities that the world of programming and technology has to offer and look forward to shaping my future in this dynamic landscape.</p>
+      </div>
+      <div class="btn-ok">
+        <button class="btnOK" onclick="closeModal()">OK</button>
+      </div>
+
+    
+  </div>
+</div>
+  <main class="certificates" id="certificates "></main>
+  <script src="./src/js/main.js"></script>
+</body>
+
+</html>

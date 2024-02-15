@@ -1,0 +1,105 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1{
+    position: absolute;
+    text-align: center;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider {
+    margin: 0 auto;
+    margin-top: 8rem;
+    width: 600px;
+    height: 500px;
+    overflow: hidden;
+    
+}
+
+.slides {
+    width: 400%;
+    height: 300px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+    transition: 2s;
+}
+
+.slide p{
+    display: flex;
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+    font-weight: bold;
+    
+}
+
+.slide img {
+    width: 600px;
+}
+
+.manual-navigation {
+    position: absolute;
+    top: 16%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & img{
+        width: 150px;
+        margin-top: 5px;
+    }
+}
+.manual-navigation .name-certificate{
+    font-size: small;
+    text-align: center;
+}
+
+.manual-btn {
+    border:none;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: 1s;
+}
+
+.manual-btn:hover img  {
+    width: 200px;
+    filter: drop-shadow(0 0 10px #000000);
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -50%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -75%;
+}

@@ -1,0 +1,279 @@
+.navlist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 40px;
+  height: 50px;
+  top: 0%;
+  left: 32%;
+  position: absolute;
+}
+
+.navlist li a {
+  padding: 20px;
+  font-size: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.navlist li a:hover {
+  border-bottom: 2px solid white;
+}
+
+.navlist .languages img{
+  height: 35px;
+  width: 35px;
+  margin-left: 10px;
+  margin-top: 5px;
+  left: 26vw;
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(22, 22, 22),
+    rgb(77, 74, 74)
+  );
+  margin-top: 21px;
+  margin-left: -16px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex;
+  margin-top: 5px;
+}
+
+.instagram {
+  height: 25px;
+  top: 10px;
+  float: left;
+  margin-right: 15px;
+  margin-left: -15px;
+}
+
+.github {
+  height: 45px;
+  top: 5px;
+  float: left;
+  margin-top: -12px;
+  margin-right: 5px;
+  margin-left: -24px;
+}
+
+.linkedin {
+  height: 30px;
+  margin-top: -8px;
+  float: left;
+  margin-right: 12px;
+  margin-left: -17px;
+}
+
+.email {
+  height: 40px;
+  margin-top: -8px;
+  float: left;
+  margin-right: 5px;
+  margin-left: -21px;
+}
+
+.content {
+  display: block;
+  justify-content: left;
+  max-width: 500px;
+  position: absolute;
+  top: 15%;
+  left: 8%;
+}
+
+.content h1 {
+  padding: 50px;
+  margin-top: 10%;
+  font-size: 50px;
+
+  & > p {
+    padding: 0px;
+    font-size: 60px;
+    color: rgb(17, 17, 17);
+  }
+}
+
+.content p {
+  padding: 0 60px;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.home #socialMedia {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Adicionado para centralizar horizontalmente */
+  align-items: center;
+  margin-left: 62px;
+}
+
+.home .instagram {
+  margin-top: 25px;
+  height: 40px;
+}
+.home .github {
+  height: 65px;
+  margin-top: 15px;
+}
+.home .linkedin {
+  height: 45px;
+  margin-top: 24px;
+}
+
+.card button {
+  border-radius: 0.5rem;
+  font-size: 15px;
+  background-color: rgb(48, 46, 46);
+  padding: 15px 40px;
+  text-transform: capitalize;
+  margin: auto;
+  display: block;
+}
+
+.card button:hover {
+  background-color: rgb(31, 30, 30);
+}
+
+.bg_video {
+  width: 100%;
+  height: 100%;
+  object-fit: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.body video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  z-index: -100;
+  filter: blur(4.5px);
+}
+
+.card {
+  position: absolute;
+  top: 17%;
+  left: 51%;
+  height: 450px;
+  width: 600px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(22, 22, 22),
+    rgb(77, 74, 74)
+  );
+  border-radius: 0.3rem;
+  z-index: -100;
+  filter: opacity(90%);
+  filter: drop-shadow(5px 5px 5px black);
+  transition: 0.8s;
+}
+
+.card:hover {
+  border: 0.1px rgb(70, 68, 68) solid;
+  height: 470px;
+  width: 650px;
+  top: 13%;
+  left: 48%;
+  filter: drop-shadow(10px 10px 10px black);
+}
+
+.card h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.card p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  text-align: justify;
+}
+
+.card img {
+  display: flex;
+  height: 50%;
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+  border-radius: 80px;
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  display: none;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.925);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .text {
+  height: 500px;
+  width: 800px;
+  background-color: none;
+}
+.modal .text p {
+  display: flex;
+  margin: 10px;
+  margin-top: 2px;
+  text-align: justify;
+  color: #fff;
+  line-height: 22px;
+}
+
+.active {
+  display: flex;
+}
+
+.active .modal {
+  animation: modal 0.4s;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.btn-ok button {
+  font-size: medium;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  color: #000000;
+  top: 88%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

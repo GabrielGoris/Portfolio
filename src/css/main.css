@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+
+.body  {
+    background-color: black;
+}
