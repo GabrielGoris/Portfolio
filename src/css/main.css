@@ -6,8 +6,10 @@
     color: white;
     font-weight: 700;
     box-sizing: border-box;
+    font-family: Times, Arial, Helvetica;
 }
 
 .body  {
     background-color: black;
+   
 }

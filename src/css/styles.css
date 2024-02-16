@@ -11,8 +11,8 @@
 
 .navlist li a {
   padding: 20px;
-  font-size: 15px;
-  font-family: Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  
 }
 
 .navlist li a:hover {
@@ -101,7 +101,7 @@
   & > p {
     padding: 0px;
     font-size: 60px;
-    color: rgb(17, 17, 17);
+    color: rgb(0, 0, 0);
   }
 }
 
