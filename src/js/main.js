@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const isPortuguese = document.documentElement.lang === 'pt';
+  const isPortuguese = document.documentElement.lang === 'pt-BR';
   const projectsPage = isPortuguese ? 'projetos.html' : 'projects.html';
   loadHTMLContent(projectsPage, '.projects');
 });
