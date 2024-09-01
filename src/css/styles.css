@@ -1,0 +1,193 @@
+.body {
+  background-image: url("./background.jpg");
+  background-size: 100vw 240vh;
+  background-repeat: no-repeat;
+}
+.parent-container {
+  display: flex;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.navlist {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 40px;
+  height: 50px;
+  z-index: 1;
+}
+
+.navlist li a {
+  padding: 20px;
+  font-size: 17px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.navlist li a:hover {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.navlist .languages img {
+  height: 40px;
+  width: 40px;
+  margin-left: 8px;
+  margin-top: 5px;
+  left: 30vw;
+  position: relative;
+  border-radius: 50%;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none;
+  background-color: var(--primary-color);
+  margin-top: 21px;
+  margin-left: -16px;
+  z-index: 10;
+  border-radius: 3px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex;
+  margin-top: 5px;
+  color: var(--secondary-color);
+}
+.dropdown-menu p {
+  color: var(--secondary-color);
+}
+
+.instagram {
+  height: 28px;
+  top: 10px;
+  margin-right: 6px;
+  margin-left: -2px;
+  float: left;
+}
+.github {
+  height: 45px;
+  top: 5px;
+  margin-left: -12px;
+  margin-top: -12px;
+  margin-right: -2px;
+  float: left;
+}
+.linkedin {
+  height: 30px;
+  margin-top: -8px;
+  margin-right: 3px;
+  margin-left: -3px;
+  float: left;
+}
+.email {
+  height: 30px;
+  margin-top: -8px;
+  margin-right: 3px;
+  margin-left: -5px;
+  float: left;
+}
+
+.content {
+  display: block;
+  justify-content: left;
+  max-width: 500px;
+  position: absolute;
+  top: 5%;
+  left: 2%;
+}
+
+.content h1 {
+  padding: 50px;
+  margin-top: 10%;
+  font-size: 50px;
+  color: var(--text-color);
+
+  & > p {
+    padding: 0px;
+    font-size: 60px;
+    color: var(--text-color);
+  }
+}
+
+.content p {
+  padding: 0 60px;
+  font-size: 20px;
+  text-align: justify;
+  color: var(--text-color);
+}
+
+.content h2 {
+  padding: 0 60px;
+  font-size: 20px;
+  text-align: justify;
+  color: var(--text-color);
+  margin-top: 20%;
+}
+
+.home #socialMedia {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 62px;
+}
+
+.home .instagram {
+  margin-top: 25px;
+  height: 40px;
+}
+.home .github {
+  height: 65px;
+  margin-top: 15px;
+}
+.home .linkedin {
+  height: 45px;
+  margin-top: 24px;
+}
+
+.card {
+  position: absolute;
+  top: 17%;
+  left: 55%;
+  height: 450px;
+  width: 600px;
+}
+
+.card h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.card img {
+  display: flex;
+  height: 80%;
+  margin: auto;
+  display: block;
+  margin-top: -20px;
+  border-radius: 50%;
+}
+
+.footer {
+  margin-top: 80px;
+}
+
+@media only screen and (max-width: 800px) {
+  .navlist {
+    padding: 0 10px;
+    height: 50px;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+  }
+}

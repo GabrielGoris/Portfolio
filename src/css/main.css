@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  box-sizing: border-box;
+  font-family: Times, Arial, Helvetica;
+}
+
+:root {
+  --primary-color: #405a72fb; /* Navy Blue */
+  --secondary-color: #ecf0f1; /* Light Gray */
+  --background-color: #2d2c46bb;
+  --accent-color: #3498db; /* Light Blue */
+  --text-color: #333333; /* Dark Gray */
+}

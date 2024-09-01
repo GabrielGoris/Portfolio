@@ -1,0 +1,80 @@
+body {
+  background-color: #b8b8b8;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  flex-direction: column;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-width: 80vw;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+article h1 {
+  margin-top: 20px;
+  margin-bottom: -20px;
+  text-align: center;
+  color: var(--text-color);
+}
+article h3 {
+  margin-top: 5px;
+  text-align: center;
+  font-size: small;
+  color: var(--text-color);
+}
+article .infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+article .aboutme {
+  color: var(--text-color);
+  width: 70%;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+article .hobby {
+  color: var(--text-color);
+  width: 70%;
+  text-align: justify;
+  margin-top: 100px;
+  line-height: 1.5;
+  margin: auto 20px;
+}
+
+article .auto-img {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+article .auto-img picture {
+  display: flex;
+  justify-content: center;
+}
+
+article .auto-img img {
+  max-width: 100%;
+  max-height: 90%;
+  height: auto;
+  border-radius: 20px;
+}
+
+article .infos .map {
+  flex: 0 1 auto;
+}
