@@ -15,12 +15,15 @@ npm run preview  # serve o build
 
 | O quê | Arquivo |
 | --- | --- |
-| E-mail, LinkedIn, GitHub, links do Horizon | `src/data/profile.ts` |
+| E-mail, LinkedIn, GitHub, links do Horizon, caminho do currículo | `src/data/profile.ts` |
+| Currículo em PDF | coloque em `public/curriculo.pdf` |
 | Todos os textos (PT e EN) | `src/i18n/strings.ts` |
 | Cores, fonte e bordas chanfradas | `src/index.css` (`@theme` + `@utility bevel`) |
 | Janelas (conteúdo de cada uma) | `src/windows/*.tsx` |
 | Registro das janelas (largura, ordem) | `src/components/Desktop.tsx` + `WINDOW_IDS` em `src/hooks/useWindowManager.ts` |
 | Layout da cozinha 3D | `src/three/modules.ts` |
+| Linha do tempo (experiencia.log) e itens da Lixeira | `src/i18n/strings.ts` (`experience` e `trash`) |
+| Comandos do terminal | `src/windows/Terminal.tsx` |
 
 ### Adicionando uma janela nova
 
@@ -36,3 +39,5 @@ npm run preview  # serve o build
 - Idioma: detecta o navegador e lembra a escolha (botão PT/EN na barra de tarefas).
 - Em telas ≤ 720px as janelas abrem em tela cheia.
 - `prefers-reduced-motion` pula o boot e desliga o cursor piscando.
+- Ícones da área de trabalho: arraste para reposicionar (encaixa na grade, posição salva no navegador); botão direito no fundo → "Organizar ícones" volta ao padrão.
+- snake.exe: setas/WASD (ou deslizar/D-pad no celular); pausa sozinho quando a janela perde o foco; o recorde fica salvo no navegador.

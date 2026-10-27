@@ -1,7 +1,35 @@
 import { useCallback, useReducer } from 'react'
 
-export const WINDOW_IDS = ['sobre', 'newcad', 'horizon', 'stack', 'contato'] as const
+export const WINDOW_IDS = [
+  'sobre',
+  'newcad',
+  'horizon',
+  'experiencia',
+  'curriculo',
+  'stack',
+  'contato',
+  'cmd',
+  'snake',
+  'lixeira',
+  'projetos',
+  'portfolio',
+  'reiamarelo',
+] as const
 export type WinId = (typeof WINDOW_IDS)[number]
+
+export const PROJECT_IDS = ['newcad', 'horizon', 'portfolio', 'reiamarelo'] as const satisfies readonly WinId[]
+
+export const DESKTOP_IDS: readonly WinId[] = [
+  'sobre',
+  'projetos',
+  'experiencia',
+  'curriculo',
+  'stack',
+  'contato',
+  'cmd',
+  'snake',
+  'lixeira',
+]
 
 export type WinState = {
   open: boolean

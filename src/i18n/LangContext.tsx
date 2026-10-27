@@ -3,7 +3,7 @@ import { dictionaries, type Dict, type Lang } from './strings'
 
 const STORAGE_KEY = 'gg-lang'
 
-type LangValue = { lang: Lang; t: Dict; toggle: () => void }
+type LangValue = { lang: Lang; t: Dict; toggle: () => void; setLang: (l: Lang) => void }
 
 const LangContext = createContext<LangValue | null>(null)
 
@@ -33,7 +33,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   const toggle = () => setLang((l) => (l === 'pt' ? 'en' : 'pt'))
 
-  return <LangContext.Provider value={{ lang, t, toggle }}>{children}</LangContext.Provider>
+  return <LangContext.Provider value={{ lang, t, toggle, setLang }}>{children}</LangContext.Provider>
 }
 
 export function useLang() {

@@ -1,45 +1,54 @@
 import { useRef, type ReactNode } from 'react'
 import { WINDOW_IDS, type WinId, type WindowManager } from '../hooks/useWindowManager'
-import { useLang } from '../i18n/LangContext'
 import { About } from '../windows/About'
 import { Contact } from '../windows/Contact'
+import { Experience } from '../windows/Experience'
 import { Horizon } from '../windows/Horizon'
+import { KingYellow } from '../windows/KingYellow'
 import { NewCad } from '../windows/NewCad'
+import { PortfolioApp } from '../windows/PortfolioApp'
+import { Projects } from '../windows/Projects'
+import { Resume } from '../windows/Resume'
+import { Snake } from '../windows/Snake'
 import { Stack } from '../windows/Stack'
-import { FileIcon } from './Icons'
+import { Terminal } from '../windows/Terminal'
+import { Trash } from '../windows/Trash'
+import { DesktopIcons } from './DesktopIcons'
+import { Wallpaper } from './Wallpaper'
 import { Window } from './Window'
 
-const WINDOWS: Record<WinId, { width: number; render: (wm: WindowManager) => ReactNode }> = {
-  sobre: { width: 520, render: (wm) => <About open={wm.open} /> },
-  newcad: { width: 720, render: () => <NewCad /> },
+type Ctx = { wm: WindowManager; onShutdown: () => void }
+
+const WINDOWS: Record<WinId, { width: number; body?: string; render: (c: Ctx) => ReactNode }> = {
+  sobre: { width: 520, render: ({ wm }) => <About open={wm.open} /> },
+  newcad: { width: 860, render: () => <NewCad /> },
   horizon: { width: 660, render: () => <Horizon /> },
+  experiencia: { width: 580, render: () => <Experience /> },
+  curriculo: { width: 680, render: () => <Resume /> },
   stack: { width: 560, render: () => <Stack /> },
   contato: { width: 480, render: () => <Contact /> },
+  cmd: { width: 620, body: 'p-0', render: ({ wm, onShutdown }) => <Terminal wm={wm} onShutdown={onShutdown} /> },
+  snake: {
+    width: 380,
+    render: ({ wm }) => <Snake active={wm.state.active === 'snake' && !wm.state.windows.snake.minimized} />,
+  },
+  lixeira: { width: 640, render: () => <Trash /> },
+  projetos: { width: 560, render: ({ wm }) => <Projects open={wm.open} /> },
+  portfolio: { width: 560, render: () => <PortfolioApp /> },
+  reiamarelo: { width: 640, render: () => <KingYellow /> },
 }
 
-export function Desktop({ wm }: { wm: WindowManager }) {
-  const { t } = useLang()
+export function Desktop({ wm, onShutdown }: Ctx) {
   const deskRef = useRef<HTMLDivElement>(null)
 
   return (
     <main ref={deskRef} className="flex-1 relative min-h-0 dots">
-      <div className="absolute left-3 top-3 flex flex-col flex-wrap gap-2 max-h-[calc(100%-24px)] max-[720px]:flex-row max-[720px]:right-3">
-        {WINDOW_IDS.map((id) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => wm.open(id)}
-            className="w-[92px] max-[720px]:w-[84px] bg-transparent border border-transparent px-1 py-2 flex flex-col items-center gap-1.5 text-xs text-txt hover:border-acc hover:bg-white/5 focus-visible:border-acc focus-visible:bg-white/5"
-          >
-            <FileIcon id={id} />
-            {t.files[id].icon}
-          </button>
-        ))}
-      </div>
+      <Wallpaper />
+      <DesktopIcons onOpen={wm.open} deskRef={deskRef} />
 
       {WINDOW_IDS.map((id) => (
-        <Window key={id} id={id} width={WINDOWS[id].width} wm={wm} deskRef={deskRef}>
-          {WINDOWS[id].render(wm)}
+        <Window key={id} id={id} width={WINDOWS[id].width} bodyClassName={WINDOWS[id].body} wm={wm} deskRef={deskRef}>
+          {WINDOWS[id].render({ wm, onShutdown })}
         </Window>
       ))}
     </main>

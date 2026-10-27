@@ -13,10 +13,22 @@
   --color-acc: #a58fe0;
   --color-star: #e3b866;
   --color-dot: #2a2038;
+  --color-pink: #ff6ec7;
 
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   --shadow-hard: 6px 6px 0 #0008;
+
+  --animate-float: float 6s ease-in-out infinite;
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
 
   --animate-blink: blink 1s steps(1) infinite;
   @keyframes blink {
@@ -92,7 +104,7 @@
 
 @layer components {
   .btn {
-    @apply bevel bg-face text-txt inline-block no-underline px-3.5 py-1.5 mr-2 mb-2 active:bevel-in;
+    @apply bevel bg-face text-txt inline-block no-underline px-3.5 py-1.5 mr-2 mb-2 active:bevel-in disabled:opacity-50 disabled:cursor-default disabled:active:bevel;
   }
   .chip {
     @apply inline-block border border-hi px-2.5 py-0.5 mr-1.5 mb-1.5 text-[13px];

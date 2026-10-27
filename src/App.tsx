@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <div className="h-full flex flex-col">
-      <Desktop wm={wm} />
+      <Desktop wm={wm} onShutdown={shutdown} />
       <Taskbar wm={wm} onShutdown={shutdown} />
       {phase === 'boot' && <BootScreen onDone={finishBoot} />}
       {phase === 'off' && <ShutdownScreen onRestart={() => setPhase('boot')} />}

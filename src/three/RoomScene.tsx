@@ -26,7 +26,7 @@ export default function RoomScene({ selected, onSelect }: Props) {
     <Canvas
       frameloop="demand"
       dpr={[1, 2]}
-      camera={{ position: [2.5, 2.2, 2.7], fov: 50 }}
+      camera={{ position: [3, 1.9, 3.1], fov: 50 }}
       onPointerMissed={() => onSelect(null)}
     >
       <color attach="background" args={[C.desk]} />
@@ -41,7 +41,7 @@ export default function RoomScene({ selected, onSelect }: Props) {
 
       <OrbitControls
         makeDefault
-        target={[-0.6, 0.95, -0.9]}
+        target={[-0.6, 1.2, -0.9]}
         enablePan={false}
         enableDamping={false}
         minDistance={2.5}

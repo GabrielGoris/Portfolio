@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { WINDOW_IDS, type WindowManager } from '../hooks/useWindowManager'
+import { DESKTOP_IDS, type WindowManager } from '../hooks/useWindowManager'
 import { useLang } from '../i18n/LangContext'
 import { FileIcon } from './Icons'
 
@@ -37,7 +37,7 @@ export function Taskbar({ wm, onShutdown }: Props) {
             </span>
           </div>
           <div className="flex-1 p-1">
-            {WINDOW_IDS.map((id) => (
+            {DESKTOP_IDS.map((id) => (
               <button
                 key={id}
                 type="button"

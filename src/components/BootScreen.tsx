@@ -11,7 +11,10 @@ export function BootScreen({ onDone }: { onDone: () => void }) {
   const lines = t.boot.lines
 
   useEffect(() => {
-    if (reduced) return onDone()
+    if (reduced) {
+      onDone()
+      return
+    }
     const timer = setTimeout(() => (count < lines.length ? setCount(count + 1) : onDone()), LINE_DELAY)
     return () => clearTimeout(timer)
   }, [count, reduced, lines.length, onDone])

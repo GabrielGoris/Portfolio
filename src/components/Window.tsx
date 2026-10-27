@@ -9,10 +9,11 @@ type Props = {
   width: number
   wm: WindowManager
   deskRef: RefObject<HTMLDivElement | null>
+  bodyClassName?: string
   children: ReactNode
 }
 
-export function Window({ id, width, wm, deskRef, children }: Props) {
+export function Window({ id, width, wm, deskRef, bodyClassName = 'p-5', children }: Props) {
   const { t } = useLang()
   const isMobile = useIsMobile()
   const w = wm.state.windows[id]
@@ -90,7 +91,7 @@ export function Window({ id, width, wm, deskRef, children }: Props) {
           </TitleButton>
         </span>
       </div>
-      <div className="p-5 overflow-auto min-h-0">{children}</div>
+      <div className={`flex-1 overflow-auto min-h-0 ${bodyClassName}`}>{children}</div>
     </section>
   )
 }
