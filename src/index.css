@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+/* Paleta do "PC antigo" — vira classes do Tailwind: bg-face, text-acc, border-hi... */
+@theme {
+  --color-desk: #1a1424;
+  --color-face: #2b2339;
+  --color-hi: #5a4a78;
+  --color-lo: #0f0a17;
+  --color-tl: #6b58a6;
+  --color-to: #3d3454;
+  --color-txt: #ede8f5;
+  --color-mut: #b3a8c8;
+  --color-acc: #a58fe0;
+  --color-star: #e3b866;
+  --color-dot: #2a2038;
+
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+  --shadow-hard: 6px 6px 0 #0008;
+
+  --animate-blink: blink 1s steps(1) infinite;
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+/* Borda chanfrada (relevo) — o coração do visual retrô */
+@utility bevel {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--color-hi) var(--color-lo) var(--color-lo) var(--color-hi);
+}
+
+/* Borda afundada (botão pressionado / área de conteúdo) */
+@utility bevel-in {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--color-lo) var(--color-hi) var(--color-hi) var(--color-lo);
+}
+
+@utility dots {
+  background-image: radial-gradient(var(--color-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    @apply bg-desk text-txt font-mono overflow-hidden;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  button {
+    cursor: pointer;
+  }
+  a {
+    @apply text-acc;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply m-0 mb-2 font-medium leading-tight;
+  }
+  p {
+    @apply m-0 mb-3 text-mut;
+  }
+  :focus-visible {
+    outline: 1px dotted var(--color-acc);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bevel bg-face text-txt inline-block no-underline px-3.5 py-1.5 mr-2 mb-2 active:bevel-in;
+  }
+  .chip {
+    @apply inline-block border border-hi px-2.5 py-0.5 mr-1.5 mb-1.5 text-[13px];
+  }
+  .label {
+    @apply text-xs text-acc tracking-widest uppercase mb-1.5;
+  }
+}
