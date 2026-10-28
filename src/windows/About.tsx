@@ -1,9 +1,8 @@
-import type { WinId } from '../hooks/useWindowManager'
 import { useLang } from '../i18n/LangContext'
 import { profile } from '../data/profile'
 import foto from '../assets/foto.jpg'
 
-export function About({ open }: { open: (id: WinId) => void }) {
+export function About() {
   const { t } = useLang()
   return (
     <>
@@ -19,16 +18,7 @@ export function About({ open }: { open: (id: WinId) => void }) {
       </div>
       <p>{t.about.p1}</p>
       <p>{t.about.p2}</p>
-      <p className="mt-4">{t.about.hint}</p>
-      <button type="button" className="btn" onClick={() => open('newcad')}>
-        {t.about.openNewcad}
-      </button>
-      <button type="button" className="btn" onClick={() => open('horizon')}>
-        {t.about.openHorizon}
-      </button>
-      <button type="button" className="btn" onClick={() => open('contato')}>
-        {t.about.contact}
-      </button>
+      <p className="mt-4 mb-0 text-acc">{t.about.hint}</p>
     </>
   )
 }

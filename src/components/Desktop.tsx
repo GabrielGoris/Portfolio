@@ -20,7 +20,7 @@ import { Window } from './Window'
 type Ctx = { wm: WindowManager; onShutdown: () => void }
 
 const WINDOWS: Record<WinId, { width: number; body?: string; render: (c: Ctx) => ReactNode }> = {
-  sobre: { width: 520, render: ({ wm }) => <About open={wm.open} /> },
+  sobre: { width: 520, render: () => <About /> },
   newcad: { width: 860, render: () => <NewCad /> },
   horizon: { width: 660, render: () => <Horizon /> },
   experiencia: { width: 580, render: () => <Experience /> },
