@@ -57,7 +57,7 @@ function DemoVideo() {
             type="button"
             onClick={() => setStarted(true)}
             disabled={failed}
-            aria-label={t.horizon.play}
+            aria-label={t.horizon.videoLabel}
             className="group absolute inset-0 size-full p-0 border-0 bg-lo cursor-pointer disabled:cursor-default"
           >
             <img src={poster} alt="" className="size-full object-contain opacity-70 group-hover:opacity-90 group-disabled:opacity-40" />
@@ -67,7 +67,6 @@ function DemoVideo() {
                   <span aria-hidden="true" className="text-acc group-hover:text-txt">
                     ▶
                   </span>
-                  {t.horizon.play}
                 </span>
               </span>
             )}
