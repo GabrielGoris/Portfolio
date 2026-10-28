@@ -62,6 +62,8 @@ export function Snake({ active }: { active: boolean }) {
   const [best, setBest] = useState(readBest)
   const [step, setStep] = useState(0)
   const swipe = useRef<P | null>(null)
+  const areaRef = useRef<HTMLDivElement>(null)
+  const [side, setSide] = useState(SIZE + 4)
 
   const draw = useCallback(() => {
     const ctx = canvasRef.current?.getContext('2d')
@@ -80,13 +82,24 @@ export function Snake({ active }: { active: boolean }) {
   }, [])
 
   useEffect(() => {
+    const area = areaRef.current
     const c = canvasRef.current
-    if (!c) return
-    const dpr = window.devicePixelRatio || 1
-    c.width = SIZE * dpr
-    c.height = SIZE * dpr
-    c.getContext('2d')?.scale(dpr, dpr)
-    draw()
+    if (!area || !c) return
+    const fit = () => {
+      const side = Math.max(120, Math.floor(Math.min(area.clientWidth, area.clientHeight)))
+      setSide(side)
+      const px = Math.round((side - 4) * (window.devicePixelRatio || 1))
+      if (c.width !== px) {
+        c.width = px
+        c.height = px
+      }
+      c.getContext('2d')?.setTransform(px / SIZE, 0, 0, px / SIZE, 0, 0)
+      draw()
+    }
+    fit()
+    const ro = new ResizeObserver(fit)
+    ro.observe(area)
+    return () => ro.disconnect()
   }, [draw])
 
   const start = useCallback(() => {
@@ -189,7 +202,7 @@ export function Snake({ active }: { active: boolean }) {
           : null
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="h-full flex flex-col items-center gap-3">
       <div className="w-full flex justify-between text-[13px]">
         <span>
           {t.snake.score}: <b className="text-acc font-medium">{score}</b>
@@ -199,24 +212,25 @@ export function Snake({ active }: { active: boolean }) {
         </span>
       </div>
 
-      <div className="relative bevel-in touch-none max-w-full" onPointerDown={onDown} onPointerUp={onUp}>
-        <canvas
-          ref={canvasRef}
-          role="img"
-          aria-label={t.snake.boardLabel}
-          className="block max-w-full"
-          style={{ width: SIZE, maxWidth: '100%', height: 'auto', aspectRatio: '1' }}
-        />
-        {overlay && (
-          <button
-            type="button"
-            onClick={onOverlay}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-lo/75 border-0 text-txt"
-          >
-            <span className="text-lg font-medium uppercase tracking-widest">{overlay[0]}</span>
-            {overlay[1] && <span className="text-xs text-mut">{overlay[1]}</span>}
-          </button>
-        )}
+      <div ref={areaRef} className="w-full flex-1 min-h-[328px] flex items-center justify-center overflow-hidden">
+        <div
+          className="relative bevel-in touch-none shrink-0"
+          style={{ width: side, height: side }}
+          onPointerDown={onDown}
+          onPointerUp={onUp}
+        >
+          <canvas ref={canvasRef} role="img" aria-label={t.snake.boardLabel} className="block size-full" />
+          {overlay && (
+            <button
+              type="button"
+              onClick={onOverlay}
+              className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-lo/75 border-0 text-txt"
+            >
+              <span className="text-lg font-medium uppercase tracking-widest">{overlay[0]}</span>
+              {overlay[1] && <span className="text-xs text-mut">{overlay[1]}</span>}
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="hidden pointer-coarse:grid grid-cols-3 gap-1">
