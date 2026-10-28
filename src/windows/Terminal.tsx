@@ -5,7 +5,8 @@ import { dictionaries, type Dict } from '../i18n/strings'
 
 const PROMPT = 'C:\\GG>'
 
-type Line = { id: number; kind: 'in' | 'out' | 'err' | 'ok'; text: string }
+type Text = string | ((t: Dict) => string)
+type Line = { id: number; kind: 'in' | 'out' | 'err' | 'ok'; text: Text }
 
 const ALIASES: Record<string, WinId> = {}
 for (const id of WINDOW_IDS) {
@@ -25,17 +26,19 @@ function helpLines(t: Dict): string[] {
 }
 
 let nextId = 0
-const mk = (kind: Line['kind'], text: string): Line => ({ id: nextId++, kind, text })
+const mk = (kind: Line['kind'], text: Text): Line => ({ id: nextId++, kind, text })
+const each = (count: number, get: (t: Dict) => string[]): Text[] =>
+  Array.from({ length: count }, (_, i) => (t: Dict) => get(t)[i])
 
 type Props = { wm: WindowManager; onShutdown: () => void }
 
 export function Terminal({ wm, onShutdown }: Props) {
   const { t, setLang } = useLang()
   const [lines, setLines] = useState<Line[]>(() => [
-    ...t.terminal.banner.map((b) => mk('out', b)),
+    ...each(t.terminal.banner.length, (d) => d.terminal.banner).map((b) => mk('out', b)),
     mk('out', ''),
     mk('in', 'help'),
-    ...helpLines(t).map((l) => mk('out', l)),
+    ...each(helpLines(t).length, helpLines).map((l) => mk('out', l)),
     mk('out', ''),
   ])
   const [input, setInput] = useState('')
@@ -55,7 +58,7 @@ export function Terminal({ wm, onShutdown }: Props) {
   const run = (raw: string) => {
     const cmdLine = raw.trim()
     const out: Line[] = [mk('in', raw)]
-    const say = (text: string, kind: Line['kind'] = 'out') => {
+    const say = (text: Text, kind: Line['kind'] = 'out') => {
       out.push(mk(kind, text))
     }
     const [cmd = '', ...args] = cmdLine.split(/\s+/)
@@ -64,10 +67,10 @@ export function Terminal({ wm, onShutdown }: Props) {
     const openApp = (name: string) => {
       const id = ALIASES[name]
       if (!id) {
-        say(t.terminal.notFound(name), 'err')
+        say((d) => d.terminal.notFound(name), 'err')
         return
       }
-      say(t.terminal.opening(t.files[id].icon), 'ok')
+      say((d) => d.terminal.opening(d.files[id].icon), 'ok')
       setTimeout(() => wm.open(id), 150)
     }
 
@@ -77,30 +80,32 @@ export function Terminal({ wm, onShutdown }: Props) {
       case 'help':
       case 'ajuda':
       case '?':
-        helpLines(t).forEach((l) => say(l))
+        each(helpLines(t).length, helpLines).forEach((l) => say(l))
         break
       case 'whoami':
-        t.terminal.whoami.forEach((l) => say(l))
+        each(t.terminal.whoami.length, (d) => d.terminal.whoami).forEach((l) => say(l))
         break
       case 'dir':
       case 'ls':
         WINDOW_IDS.forEach((id) => {
-          const name = t.files[id].icon
-          const kind = id === 'stack' || id === 'lixeira' || id === 'projetos' ? '<DIR>' : name.endsWith('.exe') ? '<APP>' : '     '
-          say(`  ${kind}  ${name}`)
+          say((d) => {
+            const name = d.files[id].icon
+            const kind = id === 'stack' || id === 'lixeira' || id === 'projetos' ? '<DIR>' : name.endsWith('.exe') ? '<APP>' : '     '
+            return `  ${kind}  ${name}`
+          })
         })
-        say(`  ${t.stack.status(WINDOW_IDS.length)}`)
+        say((d) => `  ${d.stack.status(WINDOW_IDS.length)}`)
         break
       case 'open':
       case 'start':
-        if (!arg) say(t.terminal.openUsage)
+        if (!arg) say((d) => d.terminal.openUsage)
         else openApp(arg)
         break
       case 'lang':
         if (arg === 'pt' || arg === 'en') {
           setLang(arg)
           say(dictionaries[arg].terminal.langSet, 'ok')
-        } else say(t.terminal.langUsage)
+        } else say((d) => d.terminal.langUsage)
         break
       case 'date':
       case 'time':
@@ -120,12 +125,12 @@ export function Terminal({ wm, onShutdown }: Props) {
         onShutdown()
         return
       case 'sudo':
-        say(t.terminal.sudo, 'err')
+        say((d) => d.terminal.sudo, 'err')
         break
       default: {
         const name = cmdLine.toLowerCase()
         if (ALIASES[name]) openApp(name)
-        else say(t.terminal.unknown(cmd), 'err')
+        else say((d) => d.terminal.unknown(cmd), 'err')
       }
     }
     out.push(mk('out', ''))
@@ -166,7 +171,7 @@ export function Terminal({ wm, onShutdown }: Props) {
           }`}
         >
           {l.kind === 'in' && <span className="text-acc">{PROMPT} </span>}
-          {l.text}
+          {typeof l.text === 'function' ? l.text(t) : l.text}
         </div>
       ))}
       <div ref={endRef} className="flex">

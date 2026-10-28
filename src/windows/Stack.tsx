@@ -6,6 +6,7 @@ const FOLDERS = {
   mobile: ['Capacitor', 'Android'],
   api: ['tRPC', 'Prisma', 'Vercel', 'GitHub Actions'],
   three: ['React Three Fiber', 'Three.js', 'Drei'],
+  desktop: ['Electron', 'SQLite', 'Vitest'],
 } as const
 
 export function Stack() {

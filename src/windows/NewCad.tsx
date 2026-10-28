@@ -4,7 +4,7 @@ import { MODULES, toMm } from '../three/modules'
 
 const RoomScene = lazy(() => import('../three/RoomScene'))
 
-const STACK = ['React Three Fiber', 'Three.js', 'TypeScript', 'tRPC', 'Prisma']
+const STACK = ['Electron', 'React Three Fiber', 'Three.js', 'TypeScript', 'tRPC', 'Prisma', 'SQLite', 'Vitest']
 
 export function NewCad() {
   const { t } = useLang()
@@ -18,6 +18,15 @@ export function NewCad() {
           <div className="label">{t.newcad.label}</div>
           <h2 className="text-[22px]">NewCAD</h2>
           <p>{t.newcad.desc}</p>
+          <dl className="m-0 mb-4 grid grid-cols-3 gap-2">
+            {t.newcad.stats.map((st) => (
+              <div key={st.label} className="bevel-in bg-desk px-2 py-1.5 text-center">
+                <dt className="sr-only">{st.label}</dt>
+                <dd className="m-0 text-[17px] text-star leading-tight">{st.value}</dd>
+                <div aria-hidden="true" className="text-[11px] text-mut leading-tight">{st.label}</div>
+              </div>
+            ))}
+          </dl>
           <div className="mb-4">
             {[...t.newcad.chips, ...STACK].map((s) => (
               <span key={s} className="chip">
@@ -48,11 +57,8 @@ export function NewCad() {
           <h3 className="text-[15px] text-acc mt-1">{t.newcad.roleTitle}</h3>
           <ul className="m-0 pl-0 list-none text-mut">
             {t.newcad.role.map((r) => (
-              <li key={r} className="flex gap-2 mb-1.5">
-                <span aria-hidden="true" className="text-acc">
-                  ›
-                </span>
-                {r}
+              <li key={r.area} className="mb-2">
+                <span className="text-acc">[{r.area}]</span> {r.text}
               </li>
             ))}
           </ul>

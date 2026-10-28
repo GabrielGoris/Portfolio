@@ -104,7 +104,7 @@
 
 @layer components {
   .btn {
-    @apply bevel bg-face text-txt inline-block no-underline px-3.5 py-1.5 mr-2 mb-2 active:bevel-in disabled:opacity-50 disabled:cursor-default disabled:active:bevel;
+    @apply bevel bg-face text-txt inline-block no-underline px-3.5 py-1.5 mr-2 mb-2 transition-colors duration-100 hover:bg-tl hover:text-white focus-visible:bg-tl focus-visible:text-white active:bevel-in disabled:opacity-50 disabled:cursor-default disabled:active:bevel disabled:hover:bg-face disabled:hover:text-txt;
   }
   .chip {
     @apply inline-block border border-hi px-2.5 py-0.5 mr-1.5 mb-1.5 text-[13px];

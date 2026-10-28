@@ -37,7 +37,7 @@ function DemoVideo() {
 
   return (
     <div className="bevel-in bg-desk">
-      <div className="relative aspect-[1908/943]">
+      <div className="relative aspect-video">
         {started && !failed ? (
           <video
             src={video}
